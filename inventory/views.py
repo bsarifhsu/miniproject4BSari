@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from .forms import SignUpForm
 from .models import Product
 from .forms import ProductForm
 
@@ -58,6 +60,20 @@ def product_create(request):
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'  # You can specify a custom login template
     redirect_authenticated_user = True  # Redirect authenticated users away from the login page
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('login')  # Redirect to the home page or any desired page after successful registration
+    else:
+        form = SignUpForm()
+
+    return render(request, 'registration/signup.html', {'form': form})
+
 
 
 

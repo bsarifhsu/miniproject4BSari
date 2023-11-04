@@ -9,5 +9,6 @@ urlpatterns = [
     path('<int:product_id>/delete/', views.product_delete, name='product_delete'),
     path('create/', views.product_create, name='product_create'),  # New URL pattern for creating a product
     path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('signup/', views.signup, name='signup'),
     # Add more URL patterns for other views as needed
 ]
