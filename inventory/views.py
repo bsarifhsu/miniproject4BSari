@@ -78,18 +78,4 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'  # Create a registration template
 
 
-# def signup(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('login')  # Redirect to the home page or any desired page after successful registration
-#     else:
-#         form = SignUpForm()
-#
-#     return render(request, 'registration/signup.html', {'form': form})
-
-
-
 

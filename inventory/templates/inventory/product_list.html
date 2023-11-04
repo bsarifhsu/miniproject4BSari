@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Product List</title>
-</head>
-    <nav>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'logout' %}">Logout</a>
-    </nav>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+    <!-- Your specific page content goes here -->
     <h1>Product List</h1>
     <ul>
         {% for product in products %}
             <li><a href="{% url 'inventory:product_detail' product.id %}">{{ product.name }}</a></li>
-
         {% endfor %}
     </ul>
-</body>
-</html>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}

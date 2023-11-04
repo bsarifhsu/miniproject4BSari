@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Delete Product</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}Delete Product{% endblock %}
+
+{% block content %}
+    <!-- Your specific page content goes here -->
     <h1>Delete Product</h1>
     <p>Are you sure you want to delete the product "{{ product.name }}"?</p>
     <form method="post">
@@ -11,5 +12,4 @@
         <input type="submit" value="Delete">
     </form>
     <a href="{% url 'inventory:product_list' %}">Cancel</a>
-</body>
-</html>
+{% endblock %}

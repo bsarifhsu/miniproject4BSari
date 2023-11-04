@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Edit Product</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+    <!-- Your specific page content goes here -->
     <h1>Edit Product</h1>
     <form method="post">
         {% csrf_token %}
@@ -11,5 +12,4 @@
         <input type="submit" value="Save Changes">
     </form>
     <a href="{% url 'inventory:product_detail' product.id %}">Cancel</a>
-</body>
-</html>
+{% endblock %}

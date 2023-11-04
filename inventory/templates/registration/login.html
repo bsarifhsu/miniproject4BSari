@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <title>Login</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <!-- Your specific page content goes here -->
     <h1>Login</h1>
     <form method="post">
         {% csrf_token %}
@@ -11,6 +12,5 @@
         {{ form.password.label_tag }} {{ form.password }}
         <input type="submit" value="Login">
     </form>
-{#    <p>Don't have an account? <a href="{% url 'registration:signup' %}">Sign up</a></p>#}
-</body>
-</html>
+    <p>Don't have an account? <a href="{% url 'registration:signup' %}">Sign up</a></p>
+{% endblock %}
