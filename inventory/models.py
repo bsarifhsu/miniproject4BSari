@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    make = models.CharField(max_length=50, default="Make")
-    model = models.CharField(max_length=50, default="Model")
-    asset_tag = models.CharField(max_length=20, default="N/A", unique=True)
-    serial_number = models.CharField(max_length=50, default="Serial Number", unique=True)
-    note = models.TextField(default="No notes available")
+    make = models.CharField(max_length=50, default=" ")
+    model = models.CharField(max_length=50, default=" ")
+    asset_tag = models.CharField(max_length=20, default=" ", unique=True)
+    serial_number = models.CharField(max_length=50, default=" ", unique=True)
+    note = models.TextField(default=" ")
 
     def __str__(self):
         return self.name
