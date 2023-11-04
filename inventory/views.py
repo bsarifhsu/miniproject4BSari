@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import login
 from .forms import SignUpForm
 from .models import Product
@@ -60,6 +60,10 @@ def product_create(request):
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'  # You can specify a custom login template
     redirect_authenticated_user = True  # Redirect authenticated users away from the login page
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'registration/logout.html'  # Optional: Provide a custom logout template
 
 
 def signup(request):
