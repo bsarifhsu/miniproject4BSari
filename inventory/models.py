@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
-    quantity = models.PositiveIntegerField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    make = models.CharField(max_length=50, default="Make")
+    model = models.CharField(max_length=50, default="Model")
+    asset_tag = models.CharField(max_length=20, default="N/A")
+    serial_number = models.CharField(max_length=50, default="Serial Number")
+    note = models.TextField(default="No notes available")
 
     def __str__(self):
         return self.name
