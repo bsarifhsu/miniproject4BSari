@@ -25,8 +25,10 @@ This will create the administrator login for your /admin side of your project. I
 ```
 python manage.py createsuperuser
 ```
-## How to run
-In a terminal windows, please type the following:
+## Run the Development Server:
+You can start the development server using the following command:
 ```
 python manage.py runserver
 ```
+
+
