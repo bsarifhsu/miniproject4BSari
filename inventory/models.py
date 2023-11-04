@@ -1,3 +1,8 @@
+# INF601 - Advanced Programming in Python
+# Bunyamin Sari
+# Mini Project 4
+
+
 from django.db import models
 from django.contrib.auth.models import User
 
