@@ -2,9 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import login
-from .forms import SignUpForm
+
 from .models import Product
-from .forms import ProductForm
+from .forms import ProductForm, SignUpForm
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+
+
+def home(request):
+    return render(request, "base.html")
 
 
 def product_list(request):
@@ -66,17 +72,23 @@ class CustomLogoutView(LogoutView):
     template_name = 'registration/logout.html'  # Optional: Provide a custom logout template
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('login')  # Redirect to the home page or any desired page after successful registration
-    else:
-        form = SignUpForm()
+class SignUpView(CreateView):
+    form_class = SignUpForm
+    success_url = reverse_lazy('login')  # Redirect to the login page upon successful registration
+    template_name = 'registration/signup.html'  # Create a registration template
 
-    return render(request, 'registration/signup.html', {'form': form})
+
+# def signup(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('login')  # Redirect to the home page or any desired page after successful registration
+#     else:
+#         form = SignUpForm()
+#
+#     return render(request, 'registration/signup.html', {'form': form})
 
 
 
