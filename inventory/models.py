@@ -6,8 +6,8 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     make = models.CharField(max_length=50, default="Make")
     model = models.CharField(max_length=50, default="Model")
-    asset_tag = models.CharField(max_length=20, default="N/A")
-    serial_number = models.CharField(max_length=50, default="Serial Number")
+    asset_tag = models.CharField(max_length=20, default="N/A", unique=True)
+    serial_number = models.CharField(max_length=50, default="Serial Number", unique=True)
     note = models.TextField(default="No notes available")
 
     def __str__(self):
