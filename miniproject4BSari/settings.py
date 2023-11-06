@@ -131,6 +131,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = 'inventory:product_list'
+LOGOUT_REDIRECT_URL = '/'  # Redirect to the root URL (home page)
 LOGIN_URL = 'login'  # This should match the name you provided in your URL patterns
 
 
