@@ -11,6 +11,7 @@ from .models import Product
 from .forms import ProductForm, SignUpForm
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 def home(request):
@@ -59,10 +60,11 @@ def product_create(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             new_product = form.save()
+            # After successfully creating a new product
+            messages.success(request, 'Product created successfully.')
             return redirect('inventory:product_detail', product_id=new_product.id)
     else:
         form = ProductForm()
-
     return render(request, 'inventory/product_create.html', {'form': form})
 
 
@@ -72,8 +74,8 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = True  # Redirect authenticated users away from the login page
 
 
-class CustomLogoutView(LogoutView):
-    template_name = 'registration/logout.html'  # Optional: Provide a custom logout template
+# class CustomLogoutView(LogoutView):
+#     template_name = 'registration/logout.html'  # Optional: Provide a custom logout template
 
 
 class SignUpView(CreateView):
