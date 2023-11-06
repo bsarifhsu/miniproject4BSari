@@ -10,8 +10,7 @@ from django.conf.urls.static import static
 
 app_name = "inventory"
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('products/', views.product_list, name='product_list'),
+    path('', views.product_list, name='product_list'),
     path('<int:product_id>/', views.product_detail, name='product_detail'),
     path('<int:product_id>/edit/', views.product_edit, name='product_edit'),
     path('<int:product_id>/delete/', views.product_delete, name='product_delete'),

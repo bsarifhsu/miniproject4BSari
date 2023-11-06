@@ -1,16 +1,36 @@
-
 {% extends "base.html" %}
 
 {% block title %}Products{% endblock %}
 
 {% block content %}
+    <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <!-- Your specific page content goes here -->
     <h1>Product List</h1>
-    <ul>
-        {% for product in products %}
-            <li><a href="{% url 'inventory:product_detail' product.id %}">{{ product.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Asset Tag</th>
+                <th>Serial Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><a href="{% url 'inventory:product_detail' product.id %}">{{ product.name }}</a></td>
+                    <td>{{ product.note }}</td>
+                    <td>{{ product.make }}</td>
+                    <td>{{ product.model }}</td>
+                    <td>{{ product.asset_tag }}</td>
+                    <td>{{ product.serial_number }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
 {% endblock %}
