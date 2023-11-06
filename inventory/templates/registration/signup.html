@@ -1,14 +1,35 @@
-
 {% extends "base.html" %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Signup{% endblock %}
 
 {% block content %}
-    <!-- Your specific page content goes here -->
-    <h2>Sign up</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign up</button>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h4 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Sign Up</h4>
+        <p class="col-lg-10 fs-4">The Inventory App is a web application developed using Django, a Python web framework</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        {% csrf_token %}
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="{{ form.username.id_for_label_tag }}" name="{{ form.username.name }}" value="{{ form.username.value|default:"" }}" placeholder="Username" required>
+            <label for="{{ form.username.id_for_label_tag }}">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="{{ form.password1.id_for_label_tag }}" name="{{ form.password1.name }}" value="{{ form.password1.value|default:""}}" placeholder="Password" required>
+            <label for="{{ form.password1.id_for_label_tag }}">Password</label>
+          </div>
+            <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="{{ form.password2.id_for_label_tag }}" name="{{ form.password2.name }}" value="{{ form.password2.value|default:""}}" placeholder="Confirm Password" required>
+            <label for="{{ form.password2.id_for_label_tag }}">Confirm Password</label>
+          </div>
+          <button class="w-100 btn btn-lg btn-secondary btn-lg" type="submit">Sign Up</button>
+          <hr class="my-4">
+          <small class="text-body-secondary">Already have an account? <a href="{% url 'login' %}">Login</a></small>
         </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}
+
