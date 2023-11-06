@@ -5,6 +5,8 @@
 
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "inventory"
 urlpatterns = [
@@ -14,4 +16,4 @@ urlpatterns = [
     path('<int:product_id>/edit/', views.product_edit, name='product_edit'),
     path('<int:product_id>/delete/', views.product_delete, name='product_delete'),
     path('create/', views.product_create, name='product_create'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
