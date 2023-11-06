@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}
@@ -6,12 +5,50 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Your specific page content goes here -->
-    <h1>Create Product</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create Product">
-    </form>
+    <div class="container col-xxl-6 px-4 py-5">
+        <h4>Create Product</h4>
+        <br/>
+        <form method="post" class="needs-validation">
+            {% csrf_token %}
+            <div class="mb-3 row">
+                <label for="{{ form.name.id_for_label }}" class="col-3 col-form-label">Name:</label>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" value="{{ form.name.value|default:"" }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.make.id_for_label }}" class="col-3 col-form-label">Make:</label>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="{{ form.make.id_for_label }}" name="{{ form.make.name }}" value="{{ form.make.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.model.id_for_label }}" class="col-3 col-form-label">Model:</label>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="{{ form.model.id_for_label }}" name="{{ form.model.name }}" value="{{ form.model.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.asset_tag.id_for_label }}" class="col-3 col-form-label">Asset Tag:</label>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="{{ form.asset_tag.id_for_label }}" name="{{ form.asset_tag.name }}" value="{{ form.asset_tag.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.serial_number.id_for_label }}" class="col-3 col-form-label">Serial Number:</label>
+                <div class="col-9">
+                    <input type="text" class="form-control" id="{{ form.serial_number.id_for_label }}" name="{{ form.serial_number.name }}" value="{{ form.serial_number.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.note.id_for_label }}" class="col-3 col-form-label">Note:</label>
+                <div class="col-9">
+                    <textarea class="form-control" id="{{ form.note.id_for_label }}" name="{{ form.note.name }}">{{ form.note.value }}</textarea>
+                </div>
+            </div>
+            <div class="col-9 text-center mx-auto">
+                <button type="submit" class="btn btn-secondary btn-lg">Create Product</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
-
