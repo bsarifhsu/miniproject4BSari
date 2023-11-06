@@ -1,15 +1,55 @@
-
 {% extends "base.html" %}
 
 {% block title %}Edit Product{% endblock %}
 
 {% block content %}
-    <!-- Your specific page content goes here -->
-    <h1>Edit Product</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save Changes">
-    </form>
-    <a href="{% url 'inventory:product_detail' product.id %}">Cancel</a>
+    <div class="container col-xxl-6 py-5">
+        <h4>Edit {{ form.name.value }}</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3 row">
+                <label for="{{ form.name.id_for_label }}" class="col-sm-3 col-form-label">Name:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" value="{{ form.name.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.note.id_for_label }}" class="col-sm-3 col-form-label">Description:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.note.id_for_label }}" name="{{ form.note.name }}" value="{{ form.note.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.make.id_for_label }}" class="col-sm-3 col-form-label">Make:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.make.id_for_label }}" name="{{ form.make.name }}" value="{{ form.make.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.model.id_for_label }}" class="col-sm-3 col-form-label">Model:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.model.id_for_label }}" name="{{ form.model.name }}" value="{{ form.model.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.asset_tag.id_for_label }}" class="col-sm-3 col-form-label">Asset Tag:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.asset_tag.id_for_label }}" name="{{ form.asset_tag.name }}" value="{{ form.asset_tag.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="{{ form.serial_number.id_for_label }}" class="col-sm-3 col-form-label">Serial Number:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="{{ form.serial_number.id_for_label }}" name="{{ form.serial_number.name }}" value="{{ form.serial_number.value }}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-secondary btn-lg">Save Changes</button>
+                    <a href="{% url 'inventory:product_detail' product.id %}" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
 {% endblock %}
