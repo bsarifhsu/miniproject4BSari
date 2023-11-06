@@ -14,7 +14,7 @@ from django.urls import reverse_lazy
 
 
 def home(request):
-    return render(request, "base.html")
+    return render(request, 'home.html')
 
 
 def product_list(request):

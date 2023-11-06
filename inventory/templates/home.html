@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Jumbotron for Home Page -->
+    <div class="jumbotron text-center">
+        <h1>Welcome to Inventory App</h1>
+        <p>A simple inventory management application to keep track of your products.</p>
+        <a class="btn btn-primary" href="{% url 'inventory:product_list' %}">View All Products</a>
+    </div>
+{% endblock %}
