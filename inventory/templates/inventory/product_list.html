@@ -6,7 +6,7 @@
     <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <!-- Your specific page content goes here -->
-    <h1>Product List</h1>
+    <h4>Product List, Devices & Equipment</h4>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -31,6 +31,9 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="text-center">
+        <a href="{% url 'inventory:product_create' %}" class="btn btn-primary btn-lg">Add New Product</a>
+    </div>
     </div>
 </div>
 {% endblock %}
