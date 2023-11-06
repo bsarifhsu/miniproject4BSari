@@ -1,11 +1,38 @@
-
 {% extends "base.html" %}
 
 {% block title %}Product Detail{% endblock %}
 
 {% block content %}
-    <!-- Your specific page content goes here -->
-    {{ product }}
+    <div class="container col-xxl-6 px-4 py-5">
+        <h4>Product Details</h4>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Make</th>
+                <td>{{ product.make }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ product.model }}</td>
+            </tr>
+            <tr>
+                <th>Asset Tag</th>
+                <td>{{ product.asset_tag }}</td>
+            </tr>
+            <tr>
+                <th>Serial Number</th>
+                <td>{{ product.serial_number }}</td>
+            </tr>
+            <tr>
+                <th>Notes:</th>
+                <td>{{ product.note }}</td>
+            </tr>
+        </table>
+        <br/>
+            <a href="{% url 'inventory:product_list' %}" class="btn btn-secondary btn-lg">Back to Products</a>
+            <p class="mt-3 text-muted">Note: User details such as check-in and check-out information will be available in the near future.</p>
+    </div>
 {% endblock %}
-
-

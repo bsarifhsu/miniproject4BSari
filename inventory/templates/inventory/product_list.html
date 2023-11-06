@@ -11,28 +11,28 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Description</th>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Asset Tag</th>
                 <th>Serial Number</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
                 <tr>
                     <td><a href="{% url 'inventory:product_detail' product.id %}">{{ product.name }}</a></td>
-                    <td>{{ product.note }}</td>
                     <td>{{ product.make }}</td>
                     <td>{{ product.model }}</td>
                     <td>{{ product.asset_tag }}</td>
                     <td>{{ product.serial_number }}</td>
+                    <td>{{ product.note }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <div class="text-center">
-        <a href="{% url 'inventory:product_create' %}" class="btn btn-primary btn-lg">Add New Product</a>
+        <a href="{% url 'inventory:product_create' %}" class="btn btn-secondary btn-lg">Add New Product</a>
     </div>
     </div>
 </div>
