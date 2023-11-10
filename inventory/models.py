@@ -4,6 +4,7 @@
 
 
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 
@@ -14,15 +15,16 @@ class Product(models.Model):
     asset_tag = models.CharField(max_length=20, default=" ", unique=True)
     serial_number = models.CharField(max_length=50, default=" ", unique=True)
     note = models.TextField(default=" ")
+    is_checked_out = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
 
 class CheckOut(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    checked_out_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    checked_out_date = models.DateTimeField(auto_now_add=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)  # Adjust this according to your model structure
+    checked_out_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='checked_out_products')  # Specify related_name
+    checked_out_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.product.name} - Checked Out by {self.checked_out_by.username} on {self.checked_out_date}"
@@ -35,3 +37,6 @@ class CheckIn(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - Checked In by {self.checked_in_by.username} on {self.checked_in_date}"
+
+
+
