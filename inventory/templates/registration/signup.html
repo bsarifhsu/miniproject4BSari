@@ -15,6 +15,9 @@
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="{{ form.username.id_for_label_tag }}" name="{{ form.username.name }}" value="{{ form.username.value|default:"" }}" placeholder="Username" required>
             <label for="{{ form.username.id_for_label_tag }}">Username</label>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
           </div>
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="{{ form.password1.id_for_label_tag }}" name="{{ form.password1.name }}" value="{{ form.password1.value|default:""}}" placeholder="Password" required>
@@ -26,7 +29,8 @@
           </div>
           <button class="w-100 btn btn-lg btn-secondary btn-lg" type="submit">Sign Up</button>
           <hr class="my-4">
-          <small class="text-body-secondary">Already have an account? <a href="{% url 'login' %}">Login</a></small>
+          <small class="text-body-secondary">Already have an account? <a href="{% url 'login' %}">Login</a></small><br/><br/>
+            <small class="text-body-secondary">The password should be at least <strong>8 characters</strong> long.It must be a combination of numbers and letters. </small>
         </form>
       </div>
     </div>
