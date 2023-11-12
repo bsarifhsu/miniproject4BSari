@@ -16,6 +16,14 @@ class Product(models.Model):
     serial_number = models.CharField(max_length=50, default=" ", unique=True)
     note = models.TextField(default=" ")
     is_checked_out = models.BooleanField(default=False)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
+    def save(self, *args, **kwargs):
+        if not self.created_by_id:
+            # Set the default value to the currently logged-in user when the product is created
+            self.created_by = User.objects.get(
+                username='Admin')  # Replace 'default_user' with an appropriate default username
+        super(Product, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

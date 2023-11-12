@@ -48,6 +48,11 @@ def product_detail(request, product_id):
 def product_edit(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
+    # Check if the logged-in user is the creator of the product
+    if product.created_by != request.user:
+        messages.error(request, 'You do not have permission to edit this product.')
+        return redirect('inventory:product_list')
+
     if request.method == 'POST':
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
@@ -75,7 +80,9 @@ def product_create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
-            new_product = form.save()
+            new_product = form.save(commit=False)
+            new_product.created_by = request.user
+            new_product.save()
             # After successfully creating a new product
             messages.success(request, 'Product created successfully.')
             return redirect('inventory:product_detail', product_id=new_product.id)
